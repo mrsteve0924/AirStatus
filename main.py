@@ -1,4 +1,4 @@
-from bleak import discover
+from bleak import BleakScanner
 from asyncio import new_event_loop, set_event_loop, get_event_loop
 from time import sleep, time_ns
 from binascii import hexlify
@@ -40,7 +40,7 @@ def get_best_result(device):
 # Getting data with hex format
 async def get_device():
     # Scanning for devices
-    devices = await discover()
+    devices = await BleakScanner.discover()
     for d in devices:
         # Checking for AirPods
         d = get_best_result(d)
